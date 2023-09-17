@@ -8,7 +8,9 @@ const { limiter } = require('./middlewares/limiter');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { errorHandler } = require('./middlewares/error-handler');
 
-const { PORT, DB_URL } = require('./utils/config');
+const {
+  PORT, DB_URL, NODE_ENV, SECRET_KEY,
+} = require('./utils/config');
 
 const app = express();
 app.use(cors());
@@ -31,5 +33,5 @@ app.use(errors());
 app.use(errorHandler);
 
 app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}, address database: ${DB_URL}`);
+  console.log(`App listening on port ${PORT}, address database: ${DB_URL}, node env: ${NODE_ENV}, secret key: ${SECRET_KEY}`);
 });
