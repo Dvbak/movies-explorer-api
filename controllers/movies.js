@@ -16,8 +16,8 @@ const addMovie = (req, res, next) => {
     trailerLink,
     thumbnail,
     movieId,
-    nameRu,
-    nameEn,
+    nameRU,
+    nameEN,
   } = req.body;
   Movie.create({
     country,
@@ -29,8 +29,8 @@ const addMovie = (req, res, next) => {
     trailerLink,
     thumbnail,
     movieId,
-    nameRu,
-    nameEn,
+    nameRU,
+    nameEN,
     owner: req.user._id,
   })
     .then((movieCard) => {
@@ -52,7 +52,7 @@ const getListMovies = (req, res, next) => {
 };
 
 const deleteMovieById = (req, res, next) => {
-  Movie.findById(req.params.cardId)
+  Movie.findById(req.params._id)
     .then((movieCard) => {
       if (!movieCard) {
         throw new NotFoundError('Карточка по данному _id не найдена');
