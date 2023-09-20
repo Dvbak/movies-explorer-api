@@ -22,7 +22,7 @@ const createUser = (req, res, next) => {
       }))
       .catch((err) => {
         if (err.code === 11000) {
-          next(new ConflictError(`Пользователь с данным ${email} уже зарегистрирован`));
+          next(new ConflictError(`Пользователь с почтой ${email} уже зарегистрирован`));
         } else if (err instanceof mongoose.Error.ValidationError) {
           next(new BadRequestError(err.message));
         } else {
